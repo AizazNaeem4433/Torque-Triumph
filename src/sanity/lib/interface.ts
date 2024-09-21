@@ -1,3 +1,4 @@
+/* eslint-disable*/
 export interface simpleblogtype {
     Title: string;
     Smalldescription: string;

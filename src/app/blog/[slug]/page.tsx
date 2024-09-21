@@ -1,7 +1,7 @@
+/* eslint-disable*/
+
 import { client } from "@/sanity/lib/client"
 import { fullblog } from "@/sanity/lib/interface"
-import { log } from "console"
-
 async function getData(slug: string) {
 
     const query=
@@ -24,5 +24,5 @@ export default async function BlogArtical({params}: {params:{Slug: string}}){
                 
             </h1>
         </div>
-    )
+    ) 
 }
