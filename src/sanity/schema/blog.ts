@@ -28,7 +28,7 @@ export const blogtype = defineType({
         type: 'text',
         title: 'Small description',
       }),
-      ({
+      defineField({
         name: 'content',
         type: 'array',
         title: 'Content',
