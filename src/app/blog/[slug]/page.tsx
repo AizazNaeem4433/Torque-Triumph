@@ -1,5 +1,4 @@
 /* eslint-disable*/
-
 import { client } from "@/sanity/lib/client"
 import { fullblog } from "@/sanity/lib/interface"
 async function getData(slug: string) {
