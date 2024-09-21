@@ -8,14 +8,37 @@ export const blogtype = defineType({
     defineField({
       name: 'Title',
       type: 'string',
+      title: 'Title of blog articale'
     }),
     defineField({
-        name: 'description',
-        type: 'string',
+        name: 'slug',
+        type: 'slug',
+        title: 'Slug of your articale',
+        options:{
+          source:'Title',
+        }
       }),
       defineField({
         name: 'image',
         type: 'image',
+        title: 'Title Image',
       }),
+      defineField({
+        name: 'Smalldescription',
+        type: 'text',
+        title: 'Small description',
+      }),
+      ({
+        name: 'content',
+        type: 'array',
+        title: 'Content',
+        of: [
+          {
+            type: 'block',
+          }
+        ]
+      }),
+
+      
   ],
 })
