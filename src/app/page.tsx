@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { simpleblogtype } from "@/sanity/lib/interface";
-import { log } from "console";
 import Image from "next/image";
 import Link from "next/link";
 async function getData() {
@@ -19,9 +18,7 @@ async function getData() {
   return data
 }
 export default  async function Home() {
-  const data: simpleblogtype[] = await getData();
-  console.log(data);
-  
+  const data: simpleblogtype[] = await getData();  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-5">
       {data.map((post, idx)=>(

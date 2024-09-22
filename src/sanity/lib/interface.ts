@@ -8,7 +8,7 @@ export interface simpleblogtype {
     };
   export interface fullblog{
     currentSlug: string,
-    Title: string,
+    Title: any,
     content: any,
     image: any
 
