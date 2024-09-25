@@ -1,0 +1,51 @@
+/* From Uiverse.io by mirbasit01 */ 
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px; /* Adjust as needed */
+  max-height: 390px; /* Adjust as needed */
+  transition: transform 0.3s, box-shadow 0.3s; 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Base shadow for card */
+
+}
+
+.card .maincontent {
+  flex: 1;
+}
+
+.card .header span:first-child {
+  font-weight: 600;
+  color: #717171;
+  margin-right: 4px;
+}
+
+.card .heading {
+  font-size: 24px;
+  margin: 24px 0 16px;
+  font-weight: 600;
+}
+
+.card .categories {
+  display: flex;
+  gap: 10px;
+}
+
+.card .categories span {
+  background-color: #0a89a8;
+  padding: 4px 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 50em;
+}
+
+.card .footer {
+  font-weight: 600;
+  color: #717171;
+  margin-right: 4px;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+}
