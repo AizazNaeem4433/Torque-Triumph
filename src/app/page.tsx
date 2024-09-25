@@ -6,6 +6,7 @@ import { simpleblogtype } from "@/sanity/lib/interface";
 import Image from "next/image";
 import Link from "next/link";
 import styles from './custom.module.css';
+import CardStyles from './card.module.css'
 export const revalidate = 10
 
 async function getData() {
@@ -24,9 +25,10 @@ export default async function Home() {
   const data: simpleblogtype[] = await getData();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-8">
       {data.map((post, idx) => (
-        <Card key={idx}>
+        <Card key={idx} className={CardStyles.card}>
+                 <div className={CardStyles.maincontent}>
           <Image
             src={urlFor(post.image).url()}
             alt="image"
@@ -47,6 +49,7 @@ export default async function Home() {
               </div>
             </div>
           </CardContent>
+          </div>
         </Card>
       ))}
     </div>
