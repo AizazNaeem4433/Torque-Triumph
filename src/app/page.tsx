@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useEffect, useState } from "react"; // Import hooks from React
 import { Card, CardContent } from "@/components/ui/card";
 import { client } from "@/sanity/lib/client";
@@ -29,6 +29,7 @@ async function getData(): Promise<simpleblogtype[]> {
 export default function Home() {
   const [data, setData] = useState<simpleblogtype[]>([]);
   
+  // Fetch data on mount and every second
   useEffect(() => {
     const fetchData = async () => {
       const result = await getData();
@@ -39,7 +40,9 @@ export default function Home() {
     fetchData();
     
     // Set an interval to fetch data every second
-    const intervalId = setInterval(fetchData, 1000);
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 1000);
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
@@ -47,36 +50,33 @@ export default function Home() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-8">
-      {data.length > 0 ? (
-        data.map((post, idx) => (
-          <Card key={idx} className={Cardstyles.card}>
-            <div className={Cardstyles.maincontent}>
-              <Image
-                src={urlFor(post.image).url() ?? ''} // Use nullish coalescing for safety
-                alt={post.Title || "image"} // Better accessibility
-                width={500}
-                height={500}
-                className="rounded-t-lg h-[200px] object-cover shadow-lg"
-              />
-              <CardContent className="mt-5">
-                <h3 className="text-xl line-clamp-2 font-bold">{post.Title}</h3>
-                <p className="line-clamp-3 text-sm mt-2 text-gray-600 dark:text-gray-400">
-                  {post.Smalldescription}
-                </p>
-                <div className={styles.container}>
-                  <div className={styles.btn}>
-                    <Link href={`/blog/${post.currentSlug}`}>
-                      Read More
-                    </Link>
-                  </div>
+      {data.map((post, idx) => (
+        <Card key={idx} className={Cardstyles.card}>
+          <div className={Cardstyles.maincontent}>
+            <Image
+              src={urlFor(post.image).url() ?? ''} // Use nullish coalescing for safety
+              alt={post.Title || "image"} // Better accessibility
+              width={500}
+              height={500}
+              className="rounded-t-lg h-[200px] object-cover shadow-lg"
+            />
+            <CardContent className="mt-5">
+              <h3 className="text-xl line-clamp-2 font-bold">{post.Title}</h3>
+              <p className="line-clamp-3 text-sm mt-2 text-gray-600 dark:text-gray-400">
+                {post.Smalldescription}
+              </p>
+              <div className={styles.container}>
+                <div className={styles.btn}>
+                  <Link href={`/blog/${post.currentSlug}`}>
+                    Read More
+                  </Link>
                 </div>
-              </CardContent>
-            </div>
-          </Card>
-        ))
-      ) : (
-        <p>No posts available.</p>
-      )}
+              </div>
+            </CardContent>
+          </div>
+        </Card>
+      ))}
+      {/* Render nothing if no data */}
     </div>
   );
 }
