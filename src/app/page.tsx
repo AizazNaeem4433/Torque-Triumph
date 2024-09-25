@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react"; // Import hooks from React
 import { Card, CardContent } from "@/components/ui/card";
 import { client } from "@/sanity/lib/client";
@@ -29,7 +29,6 @@ async function getData(): Promise<simpleblogtype[]> {
 export default function Home() {
   const [data, setData] = useState<simpleblogtype[]>([]);
   
-  // Fetch data on mount and every second
   useEffect(() => {
     const fetchData = async () => {
       const result = await getData();
@@ -40,9 +39,7 @@ export default function Home() {
     fetchData();
     
     // Set an interval to fetch data every second
-    const intervalId = setInterval(() => {
-      fetchData();
-    }, 1000);
+    const intervalId = setInterval(fetchData, 1000);
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
